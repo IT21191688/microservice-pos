@@ -16,7 +16,7 @@ import lombok.*;
 public class Customer {
 
     @Id
-    private Long id;
+    private String id;
 
     @Column(name="name",nullable = false)
     private String name;

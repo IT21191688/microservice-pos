@@ -7,10 +7,9 @@ import com.shop.orderserviceapi.utill.responce.CustomResponce;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 
 @RequestMapping("/api/v1/orders")
@@ -41,6 +40,38 @@ public class OrderController {
 
 
     }
+
+    @GetMapping(path = "/getCustomerOrders/{id}")
+    public List<OrderDto> getOrdersByCustomerId(@PathVariable String id){
+
+        List<OrderDto> orders=orderService.findOrdersByCustomer(id);
+
+        //System.out.println("Success");
+
+        return orders;
+
+    }
+
+
+    /*
+    @GetMapping(path = "/getCustomerOrders/{id}")
+    public ResponseEntity<CustomResponce> getOrdersByCustomerId(@PathVariable String id){
+
+        List<OrderDto> orders=orderService.findOrdersByCustomer(id);
+
+
+        //System.out.println("Success");
+
+        return new ResponseEntity<>(
+                new CustomResponce(orders,200,"Load Success",true),
+                HttpStatus.OK
+        );
+
+
+    }
+
+
+     */
 
 
 

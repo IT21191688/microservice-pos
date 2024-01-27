@@ -18,10 +18,10 @@ import java.util.List;
 public class Order {
 
     @Id
-    private Long orderId;
+    private String orderId;
 
     @Column(name="customerId")
-    private Long customerId;
+    private String customerId;
 
     @ElementCollection
     @CollectionTable(name = "order_product", joinColumns = @JoinColumn(name = "order_id"))
